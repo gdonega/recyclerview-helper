@@ -50,7 +50,6 @@ public class BaseAdapter extends RecyclerView.Adapter {
         try {
             viewHolderClass = (Class<? extends BaseViewHolder>) Class.forName(manager.getViewHolder().toString().split(" ")[1]);
             Constructor<?> ctor = viewHolderClass.getConstructor(View.class);
-            Log.e("ok", "HAHAHHA");
             baseViewHolder = (BaseViewHolder) ctor.newInstance(view);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -64,10 +63,6 @@ public class BaseAdapter extends RecyclerView.Adapter {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
-        Log.e("View Original", String.valueOf(view.getId()));
-        Log.e("View pego", String.valueOf(baseViewHolder.getCardView().getId()));
-
 
         return baseViewHolder;
     }
